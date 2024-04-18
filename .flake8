@@ -1,0 +1,6 @@
+[flake8]
+ignore = F401, ANN101, ANN102, ANN401, R505, R506, B902, B008
+max-line-length = 140
+max-complexity = 18
+extend_select = B9
+exclude = .git,__pycache__,venv,readme.md

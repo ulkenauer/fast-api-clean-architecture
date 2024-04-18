@@ -1,0 +1,9 @@
+.idea/
+
+__pycache__/
+venv/
+.pytest_cache
+local.env
+
+.vscode/
+.postgres-data
