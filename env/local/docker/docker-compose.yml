@@ -1,5 +1,3 @@
-version: '2.4'
-
 services:
   web:
     build:
@@ -18,6 +16,7 @@ services:
       - 8000:8000
     volumes:
       - ../../../:/project
+    profiles: [backend]
   alembic:
     build:
       context: ../../../
@@ -31,6 +30,7 @@ services:
       - ../../../local.env
     volumes:
       - ../../../:/project
+    profiles: [backend]
   db:
     image: postgres:15
     container_name: postgres
