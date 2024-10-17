@@ -41,6 +41,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    ports:
+      - 5432:5432
     volumes:
       - postgres-data-playground:/var/lib/postgresql/data
 
