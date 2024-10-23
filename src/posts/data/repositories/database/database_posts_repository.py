@@ -1,5 +1,6 @@
 from sqlalchemy import func
 from sqlalchemy.future import select
+from src.exceptions.exceptions import GatewayUnavailableException
 from src.posts.data.repositories.database.mappers.database_post_mapper import DatabasePostMapper
 from src.posts.data.repositories.database.models.post import PostModel
 from src.posts.domain.repositories.posts_repository import CreatePostRequest, PostsRepository
@@ -12,9 +13,11 @@ class DatabasePostsRepository(PostsRepository):
         self.db = db
 
     async def list_posts(self) -> list[Post]:
-        items = (await self.db.execute(select(PostModel))).scalars().all()
-
-        return [DatabasePostMapper.map_post_model_to_entity(item) for item in items]
+        try:
+            items = (await self.db.execute(select(PostModel))).scalars().all()
+            return [DatabasePostMapper.map_post_model_to_entity(item) for item in items]
+        except Exception as e:
+            raise GatewayUnavailableException(message='Репозиторий сломался', code='DATABASE_POSTS_REPOSITORY_UNAVAILABLE') from e
 
     async def create_post(self, request: CreatePostRequest) -> None:
         created_object = PostModel(
