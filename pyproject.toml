@@ -1,3 +1,25 @@
+[project]
+name = "fast-api-clean-architecture"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "alembic~=1.11.1",
+    "asyncpg>=0.30.0",
+    "fastapi==0.99.1",
+    "httpx==0.24.1",
+    "minio==7.1.15",
+    "pydantic==1.10.11",
+    "pytest~=7.2.2",
+    "python-dotenv==1.0.0",
+    "python-json-logger==2.0.7",
+    "python-multipart==0.0.6",
+    "sqlalchemy==2.0.18",
+    "starlette==0.27.0",
+    "uvicorn==0.22.0",
+]
+
 [tool.black]
 line-length = 140
 include = '\.pyi?$'
@@ -22,3 +44,29 @@ skip_gitignore = true
 line_length = 140
 use_parentheses = true
 force_alphabetical_sort_within_sections = true
+
+[dependency-groups]
+dev = [
+    "black>=25.9.0",
+    "coverage>=7.11.0",
+    "flake8==6.0.0",
+    "flake8-absolute-import==1.0.0.1",
+    "flake8-annotations==3.0.0",
+    "flake8-async==22.11.14",
+    "flake8-bugbear==23.2.13",
+    "flake8-comprehensions==3.10.1",
+    "flake8-isort==6.0.0",
+    "flake8-print==5.0.0",
+    "flake8-return==1.2.0",
+    "flake8-simplify==0.19.3",
+    "flake8-variables-names==0.0.5",
+    "httpx>=0.24.1",
+    "isort==5.12.0",
+    "pre-commit>=4.3.0",
+    "pytest~=7.2.0",
+    "pytest-asyncio>=0.23.8",
+    "pytest-lazy-fixture==0.6.3",
+    "pytest-mock==3.10.0",
+    "requests>=2.32.5",
+    "tryceratops==1.1.0",
+]
