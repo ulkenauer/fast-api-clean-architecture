@@ -41,7 +41,12 @@ posts_repository_factory = mock_posts_repository_factory # использова�
 ```
 
 ## Запуск проекта в Docker
+По умолчанию берутся in-memory репозитории. Поэтому проект можно запускать без БД.
+```bash
+uvicorn src:app
+```
 
+Если нужно запустить с БД - можно поднять compose
 ```bash
 cd env/local/docker
 docker compose up -d --build
